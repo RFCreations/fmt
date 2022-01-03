@@ -2546,7 +2546,7 @@ template <> struct formatter<detail::bigint> {
 
 FMT_FUNC detail::utf8_to_utf16::utf8_to_utf16(string_view s) {
   for_each_codepoint(s, [this](uint32_t cp, string_view) {
-    if (cp == invalid_code_point) FMT_THROW(std::runtime_error("invalid utf8"));
+    if (cp == (uint32_t)invalid_code_point) FMT_THROW(std::runtime_error("invalid utf8"));
     if (cp <= 0xFFFF) {
       buffer_.push_back(static_cast<wchar_t>(cp));
     } else {
